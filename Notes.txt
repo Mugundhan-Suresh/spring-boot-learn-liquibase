@@ -1,0 +1,30 @@
+Liquibase Tutorial
+		Liquibase is an open-source database version control tool that helps you manage, track, and automate database schema changes. It makes handling database migrations easier, especially in collaborative and CI/CD (Continuous Integration/Continuous Deployment) environments.
+
+How Liquibase Works:
+
+	1.ChangeLog
+		we can define the database change in change log file in any of this format (XML , JSON , SQL or YAML)
+	2.ChangeSet
+		Each change is grouped as a "change set," representing a single atomic change (like adding a column or modifying a table).
+	3.Tracking Changes
+		It keeps track of applied changes in a special database table (DATABASECHANGELOG), preventing the same changes from being applied twice.
+	4.Rollback Support
+		You can roll back changes if needed — super helpful for fixing failed deployments!
+	5.Database Independence
+		It abstracts SQL for multiple databases (like MySQL, PostgreSQL, Oracle, etc.), making migrations more flexible.
+
+
+Example like this:
+
+<databaseChangeLog>
+    <changeSet id="1" author="developer">
+        <createTable tableName="users">
+            <column name="id" type="INT" autoIncrement="true">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="name" type="VARCHAR(255)"/>
+            <column name="email" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+</databaseChangeLog>
